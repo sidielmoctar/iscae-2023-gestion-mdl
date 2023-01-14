@@ -1,0 +1,29 @@
+<mat-card>
+  <h3>Liste des produits</h3>
+  <table class="table table-bordered table-striped">
+    <tr>
+      <th>Catégorie</th>
+      <th>Marque</th>
+      <th>Nom</th>
+      <th>Prix</th>
+      <th>Description</th>
+    </tr>
+    <tr *ngFor="let produit of produits">
+      <td>
+        {{produit.categories.nom}}
+      </td>
+      <td>
+        {{produit.marqueprives.nom}}
+      </td>
+      <td>
+        {{produit.nom}}
+      </td>
+      <td>
+        {{produit.prix | montantFormatter : true}}
+      </td>
+      <td>
+        {{produit.description}}
+      </td>
+    </tr>
+  </table>
+</mat-card>
