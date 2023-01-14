@@ -9,9 +9,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.example</groupId>
-    <artifactId>correction_exos</artifactId>
+    <artifactId>gestionMdl</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>correction_exos</name>
+    <name>gestionMdl</name>
     <description>Application pour correction excercices</description>
     <properties>
         <java.version>19</java.version>

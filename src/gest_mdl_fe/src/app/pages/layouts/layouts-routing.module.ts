@@ -25,10 +25,10 @@ const routes: Routes = [
           ),
       },
       {
-        path: 'produits',
+        path: 'gestMdl',
         loadChildren: () =>
-          import('../produits/produits.module').then(
-            (m) => m.ProduitsModule
+          import('../gest-mdl/gest-mdl.module').then(
+            (m) => m.GestMdlModule
           ),
       },
     ]

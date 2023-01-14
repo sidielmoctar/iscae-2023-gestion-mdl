@@ -14,7 +14,7 @@ export class AuthentificationService {
               private localDbService: LocalDbService) { }
 
   logIn(loginObj: ILogin): Observable<ILoginResp> {
-    return this.httpClient.post<ILoginResp>("http://sup-er-app.herokuapp.com/apis/loginclient/", loginObj);
+    return this.httpClient.post<ILoginResp>("http://localhost:8080/login", loginObj);
   }
 
   logOut() {
