@@ -3,13 +3,16 @@ package com.iscae.gestionMdl.data.entities;
 import com.iscae.gestionMdl.mdlMangement.dtos.MatiereDto;
 import com.iscae.gestionMdl.mdlMangement.dtos.MdlDto;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 
 import java.util.Objects;
 
 /**
  * @author Abderrahmane
  */
-
+@Builder
+@AllArgsConstructor
 @Entity
 @Table(name = "matiere", schema = "iscae_sb_db", catalog = "")
 public class MatiereEntity {
@@ -20,6 +23,10 @@ public class MatiereEntity {
     private ModuleEntity moduleByIdModule;
     private ProfesseursEntity professeursByIdProfesseur;
     private Integer credit;
+
+    public MatiereEntity() {
+
+    }
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
@@ -98,6 +105,7 @@ public class MatiereEntity {
     public MatiereDto toMaitierDto(MatiereEntity matiereEntity) {
         return MatiereDto.builder()
                 .id(matiereEntity.getId())
+                .idMdl(matiereEntity.getIdModule())
                 .lib(matiereEntity.getLib())
                 .cred(matiereEntity.getCredit())
                 .idProf(matiereEntity.getProfesseursByIdProfesseur().getId())

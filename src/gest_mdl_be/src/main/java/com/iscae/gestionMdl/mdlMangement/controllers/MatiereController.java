@@ -5,10 +5,7 @@ import com.iscae.gestionMdl.mdlMangement.dtos.MdlDto;
 import com.iscae.gestionMdl.mdlMangement.services.MatiereService;
 import com.iscae.gestionMdl.mdlMangement.services.MdlService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -29,4 +26,16 @@ public class MatiereController {
     public List<MatiereDto> getMatieres(@RequestParam("idMdl") Integer idMdl) {
         return matiereService.getMatieres(idMdl);
     }
+
+    @PostMapping
+    public void add(@RequestBody MatiereDto matiereDto) {
+        matiereService.add(matiereDto);
+    }
+
+    @PutMapping("/{id}")
+    public void update(@RequestBody MatiereDto matiereDto) {
+        matiereService.update(matiereDto);
+    }
+
+
 }

@@ -2,7 +2,36 @@
   <div class="col-sm-12">
     <mat-card>
       <h2>Liste des matières</h2>
-      <table class="table table-bordered">
+      <table class="table table-bordered table-striped">
+        <tr>
+          <td style="padding: 5px;">
+            <input type="text"
+                   [(ngModel)]="curMatiere.lib"
+                   class="form-control">
+          </td>
+          <td style="padding: 5px;">
+            <input type="text"
+                   [(ngModel)]="curMatiere.cred"
+                   class="form-control">
+          </td>
+          <td style="padding: 5px;">
+            <select class="form-control" [(ngModel)]="curMatiere.idProf">
+              <option [value]="prof.id"
+                      *ngFor="let prof of professeurs">
+                {{prof.lib}}
+              </option>
+            </select>
+          </td>
+          <td style="padding: 5px;">
+            <button class="btn btn-primary"
+                    *ngIf="!curMatiere.id"
+                    [disabled]="!curMatiere.lib || !curMatiere.cred || !curMatiere.idProf"
+                    (click)="save()">Ajouter</button>
+            <button class="btn btn-success"
+                    *ngIf="curMatiere.id"
+                    (click)="save()">Modifier</button>
+          </td>
+        </tr>
         <tr>
           <th>Nom</th>
           <th>Crédit</th>
@@ -14,7 +43,12 @@
           <td>{{mat.cred}}</td>
           <td>{{mat.nomProf}}</td>
           <td>
-
+            <i class="fa fa-edit"
+               (click)="fillForm(mat)"
+               style="font-size: 21px"></i>&nbsp;&nbsp;
+            <i class="fa fa-trash"
+               (click)="delete()"
+               style="font-size: 21px; color: orangered"></i>
           </td>
         </tr>
         <tr *ngIf="!matieres.length">

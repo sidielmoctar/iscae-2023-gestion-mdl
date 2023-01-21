@@ -25,4 +25,10 @@ public class MatiereService {
     }
 
 
+    public void add(MatiereDto matiereDto) {
+        matiereRepository.save(matiereDto.toMatierEntity(matiereDto));
+    }
+
+    public void update(MatiereDto matiereDto) {
+    }
 }

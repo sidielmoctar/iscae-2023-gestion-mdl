@@ -1,5 +1,7 @@
 package com.iscae.gestionMdl.data.entities;
 
+import com.iscae.gestionMdl.mdlMangement.dtos.MatiereDto;
+import com.iscae.gestionMdl.referentiel.dtos.RefDto;
 import jakarta.persistence.*;
 
 import java.util.Collection;
@@ -58,4 +60,12 @@ public class ProfesseursEntity {
     public void setMatieresById(Collection<MatiereEntity> matieresById) {
         this.matieresById = matieresById;
     }
+
+    public RefDto toProfesseurDto(ProfesseursEntity professeursEntity) {
+        return RefDto.builder()
+                .id(professeursEntity.getId())
+                .lib(professeursEntity.getNom())
+                .build();
+    }
+
 }

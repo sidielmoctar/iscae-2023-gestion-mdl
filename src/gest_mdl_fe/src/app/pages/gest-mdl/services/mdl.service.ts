@@ -18,5 +18,11 @@ export class MdlService {
     return this.http.get<IMatiere[]>("http://localhost:8080/gest-matiere?idMdl=" + idMdl)
   }
 
+  updateMat(curMatiere: IMatiere) {
+    return this.http.put("http://localhost:8080/gest-matiere", curMatiere);
+  }
 
+  addMat(curMatiere: IMatiere) {
+    return this.http.post("http://localhost:8080/gest-matiere", curMatiere);
+  }
 }
