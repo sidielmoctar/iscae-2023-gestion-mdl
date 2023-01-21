@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {MdlService} from "../../services/mdl.service";
+import {IMatiere} from "../../models/imatiere";
 
 @Component({
   selector: 'app-matiere-list',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MatiereListComponent implements OnInit {
 
-  constructor() { }
+  @Input("idMdl") idMdl: any;
+  matieres: IMatiere[] = [];
+
+  constructor(private mdlService: MdlService) {
+  }
 
   ngOnInit(): void {
+    this.mdlService.getMatieres(this.idMdl).subscribe(data => {
+      this.matieres = data;
+    })
   }
 
 }

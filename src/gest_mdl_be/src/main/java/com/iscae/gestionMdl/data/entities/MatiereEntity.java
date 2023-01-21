@@ -1,5 +1,6 @@
 package com.iscae.gestionMdl.data.entities;
 
+import com.iscae.gestionMdl.mdlMangement.dtos.MatiereDto;
 import com.iscae.gestionMdl.mdlMangement.dtos.MdlDto;
 import jakarta.persistence.*;
 
@@ -18,6 +19,7 @@ public class MatiereEntity {
     private Integer idProfesseur;
     private ModuleEntity moduleByIdModule;
     private ProfesseursEntity professeursByIdProfesseur;
+    private Integer credit;
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
@@ -93,4 +95,23 @@ public class MatiereEntity {
         this.professeursByIdProfesseur = professeursByIdProfesseur;
     }
 
+    public MatiereDto toMaitierDto(MatiereEntity matiereEntity) {
+        return MatiereDto.builder()
+                .id(matiereEntity.getId())
+                .lib(matiereEntity.getLib())
+                .cred(matiereEntity.getCredit())
+                .idProf(matiereEntity.getProfesseursByIdProfesseur().getId())
+                .nomProf(matiereEntity.getProfesseursByIdProfesseur().getNom())
+                .build();
+    }
+
+    @Basic
+    @Column(name = "credit")
+    public Integer getCredit() {
+        return credit;
+    }
+
+    public void setCredit(Integer credit) {
+        this.credit = credit;
+    }
 }

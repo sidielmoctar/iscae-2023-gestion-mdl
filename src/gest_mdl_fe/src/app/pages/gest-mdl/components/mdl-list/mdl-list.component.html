@@ -1,1 +1,28 @@
-<p>mdl-list works!</p>
+<div class="row">
+  <div class="col-sm-3">
+    <div *ngFor="let mdl of modules; let i = index"
+         class="mt-3">
+      <mat-card>
+        <h2>{{mdl.lib}}</h2>
+        <h3>{{mdl.libSemestre}}</h3>
+        <h4>{{mdl.coef}}</h4>
+        <div class="row">
+          <div class="col-sm-12"
+               style="text-align: right">
+            <button [class]="i == curIndex ? 'btn btn-primary' : 'btn btn-link'"
+                    (click)="showMatieres(mdl.id, i)"
+            >
+              Détails
+            </button>
+          </div>
+        </div>
+      </mat-card>
+    </div>
+
+  </div>
+  <div class="col-sm-9">
+    <app-matiere-list [idMdl]="idCurMdl"
+                      *ngIf="showMat">
+    </app-matiere-list>
+  </div>
+</div>

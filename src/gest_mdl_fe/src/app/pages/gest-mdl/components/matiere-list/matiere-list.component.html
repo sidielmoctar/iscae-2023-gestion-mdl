@@ -1,1 +1,28 @@
-<p>matiere-list works!</p>
+<div class="row">
+  <div class="col-sm-12">
+    <mat-card>
+      <h2>Liste des matières</h2>
+      <table class="table table-bordered">
+        <tr>
+          <th>Nom</th>
+          <th>Crédit</th>
+          <th>Professeur</th>
+          <th>Actions</th>
+        </tr>
+        <tr *ngFor="let mat of matieres">
+          <td>{{mat.lib}}</td>
+          <td>{{mat.cred}}</td>
+          <td>{{mat.nomProf}}</td>
+          <td>
+
+          </td>
+        </tr>
+        <tr *ngIf="!matieres.length">
+          <td colspan="4"
+              class="text-center">Aucune matière dans ce module
+          </td>
+        </tr>
+      </table>
+    </mat-card>
+  </div>
+</div>

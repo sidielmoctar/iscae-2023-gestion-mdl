@@ -20,7 +20,7 @@ public class MdlService {
 
     public List<MdlDto> getModules() {
         return moduleRepository.findAll().stream()
-                .map(m -> m.toModuleEntity(m))
+                .map(m -> m.toModuleDto(m))
                 .collect(Collectors.toList());
     }
 

@@ -4,7 +4,6 @@ import com.iscae.gestionMdl.mdlMangement.dtos.MdlDto;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.NoArgsConstructor;
 
 import java.util.Collection;
 import java.util.Objects;
@@ -101,7 +100,7 @@ public class ModuleEntity {
         this.semestreByIdSemestre = semestreByIdSemestre;
     }
 
-    public MdlDto toModuleEntity(ModuleEntity moduleEntity) {
+    public MdlDto toModuleDto(ModuleEntity moduleEntity) {
         return MdlDto.builder()
                 .id(moduleEntity.getId())
                 .lib(moduleEntity.getLib())
