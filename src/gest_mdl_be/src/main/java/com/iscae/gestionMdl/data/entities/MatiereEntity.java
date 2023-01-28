@@ -11,7 +11,7 @@ import java.util.Objects;
 /**
  * @author Abderrahmane
  */
-@Builder
+@Builder(toBuilder = true)
 @AllArgsConstructor
 @Entity
 @Table(name = "matiere", schema = "iscae_sb_db", catalog = "")

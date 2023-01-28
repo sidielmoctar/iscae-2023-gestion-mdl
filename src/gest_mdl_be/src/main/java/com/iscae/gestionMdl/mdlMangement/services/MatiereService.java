@@ -1,5 +1,6 @@
 package com.iscae.gestionMdl.mdlMangement.services;
 
+import com.iscae.gestionMdl.data.entities.MatiereEntity;
 import com.iscae.gestionMdl.data.repository.MatiereRepository;
 import com.iscae.gestionMdl.mdlMangement.dtos.MatiereDto;
 import org.springframework.stereotype.Service;
@@ -29,6 +30,8 @@ public class MatiereService {
         matiereRepository.save(matiereDto.toMatierEntity(matiereDto));
     }
 
-    public void update(MatiereDto matiereDto) {
+    public void update(MatiereDto matiereDto, Integer id) {
+        MatiereEntity matiereEntity = matiereRepository.findById(id).orElseThrow();
+        matiereRepository.save(matiereDto.toMatierEntity(matiereDto, matiereEntity));
     }
 }

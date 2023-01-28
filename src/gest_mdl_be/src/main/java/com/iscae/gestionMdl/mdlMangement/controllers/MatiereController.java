@@ -33,8 +33,8 @@ public class MatiereController {
     }
 
     @PutMapping("/{id}")
-    public void update(@RequestBody MatiereDto matiereDto) {
-        matiereService.update(matiereDto);
+    public void update(@RequestBody MatiereDto matiereDto, @PathVariable("id") Integer id) {
+        matiereService.update(matiereDto, id);
     }
 
 

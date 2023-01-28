@@ -19,7 +19,7 @@ export class MdlService {
   }
 
   updateMat(curMatiere: IMatiere) {
-    return this.http.put("http://localhost:8080/gest-matiere", curMatiere);
+    return this.http.put("http://localhost:8080/gest-matiere/" + curMatiere.id , curMatiere);
   }
 
   addMat(curMatiere: IMatiere) {

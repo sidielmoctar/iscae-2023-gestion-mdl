@@ -19,7 +19,15 @@ public class MatiereDto {
     private String nomProf;
 
     public MatiereEntity toMatierEntity(MatiereDto matiereDto) {
-        return MatiereEntity.builder()
+        return toMatiereEntity_(matiereDto, new MatiereEntity());
+    }
+
+    public MatiereEntity toMatierEntity(MatiereDto matiereDto, MatiereEntity matiereEntity) {
+        return toMatiereEntity_(matiereDto, matiereEntity);
+    }
+
+    private static MatiereEntity toMatiereEntity_(MatiereDto matiereDto, MatiereEntity matiereEntity) {
+        return matiereEntity.toBuilder()
                 .idModule(matiereDto.getIdMdl())
                 .lib(matiereDto.getLib())
                 .idProfesseur(matiereDto.getIdProf())
