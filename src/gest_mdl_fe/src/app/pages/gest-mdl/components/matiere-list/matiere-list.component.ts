@@ -3,6 +3,8 @@ import {MdlService} from "../../services/mdl.service";
 import {IMatiere} from "../../models/imatiere";
 import {IRef} from "../../../../models/iref";
 import {ReferentielService} from "../../../../services/referentiel.service";
+import {MatDialog} from "@angular/material/dialog";
+import {DialogConfirmComponent} from "../../../../common-elements/dialog-confirm/dialog-confirm.component";
 
 @Component({
   selector: 'app-matiere-list',
@@ -17,7 +19,8 @@ export class MatiereListComponent implements OnInit {
   curMatiere = <IMatiere>{}
 
   constructor(private mdlService: MdlService,
-              private referentielService: ReferentielService) {
+              private referentielService: ReferentielService,
+              public dialog: MatDialog) {
   }
 
   ngOnInit(): void {
@@ -35,7 +38,17 @@ export class MatiereListComponent implements OnInit {
     this.curMatiere = mat;
   }
 
-  delete() {
+  delete(id: number) {
+    let dialogRef = this.dialog.open(DialogConfirmComponent, {
+      width: '250px'
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        console.log("suppression ========== : appel backend")
+      }
+    });
+
 
   }
 

@@ -6,6 +6,7 @@ import {MatInputModule} from "@angular/material/input";
 import {MatButtonModule} from "@angular/material/button";
 import {MatChipsModule} from "@angular/material/chips";
 import {MatIconModule} from "@angular/material/icon";
+import {MatDialog, MatDialogModule} from "@angular/material/dialog";
 
 
 
@@ -16,7 +17,11 @@ import {MatIconModule} from "@angular/material/icon";
     MatInputModule,
     MatButtonModule,
     MatChipsModule,
-    MatIconModule
+    MatIconModule,
+    MatDialogModule
+  ],
+  providers: [
+    MatDialog
   ]
 })
 export class MaterialModule { }
