@@ -24,15 +24,23 @@ export class MatiereListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.mdlService.getMatieres(this.idMdl).subscribe(data => {
-      this.matieres = data;
-    })
+    this.getMatieres();
 
+    this.getProfesseurs();
+  }
+
+
+  private getProfesseurs() {
     this.referentielService.getProfesseurs().subscribe(data => {
       this.professeurs = data;
     })
   }
 
+  private getMatieres() {
+    this.mdlService.getMatieres(this.idMdl).subscribe(data => {
+      this.matieres = data;
+    })
+  }
 
   fillForm(mat: IMatiere) {
     this.curMatiere = mat;
@@ -45,7 +53,9 @@ export class MatiereListComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
-        console.log("suppression ========== : appel backend")
+        this.mdlService.delete(id).subscribe(data => {
+          this.getMatieres();
+        })
       }
     });
 
@@ -54,13 +64,17 @@ export class MatiereListComponent implements OnInit {
 
   save() {
     if (this.curMatiere.id) {
+      console.log("this.curMatiere.id: ", this.curMatiere.id)
       this.mdlService.updateMat(this.curMatiere).subscribe(() => {
         this.curMatiere = <IMatiere>{}
+        console.log("this.curMatiere ==== ", this.curMatiere)
+        this.getMatieres();
       })
     } else {
       this.curMatiere.idMdl = this.idMdl;
       this.mdlService.addMat(this.curMatiere).subscribe(() => {
         this.curMatiere = <IMatiere>{}
+        this.getMatieres();
       })
     }
   }

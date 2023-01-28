@@ -37,5 +37,11 @@ public class MatiereController {
         matiereService.update(matiereDto, id);
     }
 
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable("id") Integer id) {
+        matiereService.delete(id);
+    }
+
+
 
 }

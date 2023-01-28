@@ -34,4 +34,8 @@ public class MatiereService {
         MatiereEntity matiereEntity = matiereRepository.findById(id).orElseThrow();
         matiereRepository.save(matiereDto.toMatierEntity(matiereDto, matiereEntity));
     }
+
+    public void delete(Integer id) {
+        matiereRepository.deleteById(id);
+    }
 }
