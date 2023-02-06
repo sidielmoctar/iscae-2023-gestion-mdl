@@ -31,6 +31,13 @@ const routes: Routes = [
             (m) => m.GestMdlModule
           ),
       },
+      {
+        path: 'statistique',
+        loadChildren: () =>
+          import('../statistique/statistique.module').then(
+            (m) => m.StatistiqueModule
+          ),
+      },
     ]
   },
   {

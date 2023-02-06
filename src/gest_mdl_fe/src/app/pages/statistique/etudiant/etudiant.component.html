@@ -1,0 +1,14 @@
+<div class="row">
+  <div class="col-sm-6" *ngIf="etudiantAdmisByGenre">
+    <highcharts-chart [Highcharts]="Highcharts"
+                      style="height: 400px; display: block"
+                      [options]="etudiantAdmisByGenre">
+    </highcharts-chart>
+  </div>
+  <div class="col-sm-6" *ngIf="etudiantAdmisByMatAndGenre">
+    <highcharts-chart [Highcharts]="Highcharts"
+                      style="height: 400px; display: block"
+                      [options]="etudiantAdmisByMatAndGenre">
+    </highcharts-chart>
+  </div>
+</div>
